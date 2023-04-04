@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 598486306}
   - component: {fileID: 598486307}
+  - component: {fileID: 598486308}
   m_Layer: 0
   m_Name: Black
   m_TagString: Black
@@ -42,12 +43,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
+--- !u!114 &598486308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598486305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a27608979f9744b988d965cc924354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderName: White
 --- !u!1 &963822096
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,6 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 963822097}
   - component: {fileID: 963822098}
+  - component: {fileID: 963822099}
   m_Layer: 0
   m_Name: White
   m_TagString: White
@@ -90,12 +105,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
+--- !u!114 &963822099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963822096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a27608979f9744b988d965cc924354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderName: Black
 --- !u!1 &1639868633
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,11 +259,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jumpForce: 15
+  health: 3
   groundCheck: {fileID: 1639868634}
   groundRadius: 0.2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 64
+  black: {fileID: 598486306}
+  white: {fileID: 963822097}
 --- !u!50 &2798954176836283351
 Rigidbody2D:
   serializedVersion: 4

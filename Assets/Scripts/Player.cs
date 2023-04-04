@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [Header("Player Attributes")]
     [SerializeField] private float speed = 10f;
     [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private int health = 3;
 
     private Rigidbody2D rb;
     private bool jump = false;
@@ -21,6 +22,17 @@ public class Player : MonoBehaviour
 
     public Transform black;
     public Transform white;
+
+    // Create Player Singleton
+    private static Player instance;
+    public static Player Instance
+    {
+        get
+        {
+            if (instance == null) instance = GameObject.FindObjectOfType<Player>();
+            return instance;
+        }
+    }
 
 
     // Start is called before the first frame update
@@ -66,6 +78,24 @@ public class Player : MonoBehaviour
             jump = false;
         }
 
+    }
+
+    // collecting coins
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Coin"))
+        {
+            Destroy(other.gameObject);
+        }
+    }
+
+    // Taking player damage
+    public void TakeDamage(int damage)
+    {
+        if (health <= 0){
+            Debug.Log("Game Over!");
+        }
+        health -= damage;
     }
 
     // flip the player 
