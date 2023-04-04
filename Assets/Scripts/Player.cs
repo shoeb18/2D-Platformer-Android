@@ -74,23 +74,23 @@ public class Player : MonoBehaviour
         if (spriteRenderer.flipY)
         {
             spriteRenderer.flipY = false;
-            FlipBlackDown();
+            FlipBlackUp();
         }
         else
         {
             spriteRenderer.flipY = true;
-            FlipBlackUp();
+            FlipBlackDown();
         }
     }
 
     // flip the black and white sides
-    void FlipBlackDown()
+    void FlipBlackUp()
     {
         black.position = gameObject.transform.position + new Vector3(0, 0.6f, 0);
         white.position = gameObject.transform.position + new Vector3(0, -0.6f, 0);
     }
 
-    void FlipBlackUp()
+    void FlipBlackDown()
     {
         black.position = gameObject.transform.position + new Vector3(0, -0.6f, 0);
         white.position = gameObject.transform.position + new Vector3(0, 0.6f, 0);
