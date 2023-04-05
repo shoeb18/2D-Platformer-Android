@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed = 10f;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private int health = 3;
+    [SerializeField] private Text healthText;
 
     private Rigidbody2D rb;
     private bool jump = false;
@@ -40,11 +43,17 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        healthText.text = health.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (health <= 0)
+        {
+            Debug.Log("Game Over!");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
 
         // flipping the player 
         if (Input.GetMouseButtonDown(0))
@@ -77,7 +86,6 @@ public class Player : MonoBehaviour
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             jump = false;
         }
-
     }
 
     // collecting coins
@@ -92,10 +100,8 @@ public class Player : MonoBehaviour
     // Taking player damage
     public void TakeDamage(int damage)
     {
-        if (health <= 0){
-            Debug.Log("Game Over!");
-        }
         health -= damage;
+        healthText.text = health.ToString();
     }
 
     // flip the player 
