@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
     {
         if (health <= 0)
         {
+            //TODO : CREATE COOL GAMEOVER MENU
             Debug.Log("Game Over!");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
@@ -78,7 +79,7 @@ public class Player : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
 
         // make player move
-        rb.velocity = new Vector2(horizontalMove * speed, rb.velocity.y);
+        rb.velocity = new Vector2(horizontalMove * speed , rb.velocity.y);
 
         // make player jump
         if (jump && isGrounded)
